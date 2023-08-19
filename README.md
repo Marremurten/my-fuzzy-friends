@@ -51,6 +51,7 @@ The `usePetData` hook is a custom hook used to manage pet data in the applicatio
 - Considering memorization if pet records grow
 - Add unit and intergration tests
 - Accessibility: Ensure your components are accessible to users with disabilities, Semantic Html
+- Review styling, add tailwind components
 
 Best Regard,
 

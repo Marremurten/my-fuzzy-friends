@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { Plus } from '@phosphor-icons/react';
 
-const ImageUpload = ({ setFormData, formData }) => {
+const ImageUpload = ({ setFormData }) => {
   const fileInputRef = useRef(null);
 
   const handleImageUpload = (e) => {
@@ -36,8 +36,7 @@ const ImageUpload = ({ setFormData, formData }) => {
   return (
     <div className="flex justify-center ">
       <div className="p-2 bg-white rounded-lg shadow-md w-[90%] ">
-        <label
-          htmlFor="imageInput"
+        <div
           className="flex flex-col items-center justify-center w-full p-2 text-center border-2 border-gray-300 border-dashed cursor-pointer h-35"
           onClick={handleBrowseClick}
           onDrop={handleDropOrBrowse}
@@ -59,7 +58,7 @@ const ImageUpload = ({ setFormData, formData }) => {
             Drag & drop or click to browse. JPEG, JPG, or PNG image (Max size:
             3MB)
           </p>
-        </label>
+        </div>
       </div>
     </div>
   );
