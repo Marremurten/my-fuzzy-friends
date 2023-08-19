@@ -37,7 +37,7 @@ The `usePetData` hook is a custom hook used to manage pet data in the applicatio
 ### Suggestions for Further Improvement
 
 - Responsive Design- The app is not responivse now :)
-- Adding routing
+- Add routing, if the apps grows
 - Implement pagination for the pet list if the number of records grows.
 - Considering memorization if pet records grow
 - Add unit and intergration tests
