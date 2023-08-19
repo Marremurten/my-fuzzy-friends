@@ -18,6 +18,15 @@ Welcome to My Fuzzy Friends. It allows users to view, add, edit, and delete pets
 2. Navigate to the project directory
 3. Install dependencies: `npm install`
 
+## Dependecies
+
+the app was created using create-react-app
+
+Added dependecies:
+
+1.  tailwindCSS
+2.  @phosphor-icons
+
 ### Usage
 
 1. Start the development server: `npm start`
