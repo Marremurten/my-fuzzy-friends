@@ -65,12 +65,12 @@ const AddEditForm = ({ selectedPet, petType, error, onSubmit }) => {
                 type="text"
                 name="name"
                 placeholder="Enter your name"
-                value={formData?.name}
+                value={formData?.name || ''}
                 onChange={handleInputChange}
               />
               <select
                 name="gender"
-                value={formData.gender}
+                value={formData?.gender || ''}
                 onChange={handleInputChange}
                 className="px-2 py-1 mb-2 border border-gray-700 rounded"
               >
@@ -83,14 +83,14 @@ const AddEditForm = ({ selectedPet, petType, error, onSubmit }) => {
               <input
                 type="date"
                 name="dateOfBirth"
-                value={formData.dateOfBirth}
+                value={formData?.dateOfBirth || ''}
                 onChange={handleInputChange}
                 className="px-2 py-1 mb-2 border border-gray-700 rounded"
               />
               <label>Is your pet alive?</label>
               <select
                 name="alive"
-                value={formData.gender}
+                value={formData?.alive || ''}
                 onChange={handleInputChange}
                 className="px-2 py-1 mb-2 border border-gray-700 rounded"
               >
@@ -103,14 +103,14 @@ const AddEditForm = ({ selectedPet, petType, error, onSubmit }) => {
                 className="px-2 py-1 mb-2 border border-gray-700 rounded"
                 type="text"
                 name="happyPlace"
-                value={formData?.happyPlace}
+                value={formData?.happyPlace || ''}
                 onChange={handleInputChange}
               />
               <label>What is your pet's life story?</label>
               <textarea
                 className="px-2 py-1 mb-2 border border-gray-700 rounded h-30"
                 name="lifeStory"
-                value={formData?.lifeStory}
+                value={formData?.lifeStory || ''}
                 onChange={handleInputChange}
               />
 

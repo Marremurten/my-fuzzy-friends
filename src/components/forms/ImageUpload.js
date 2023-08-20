@@ -26,8 +26,8 @@ const ImageUpload = ({ setFormData }) => {
     }
   };
 
-  const handleDragOver = (event) => {
-    event.preventDefault();
+  const handleDragOver = (e) => {
+    e.preventDefault();
   };
 
   const handleBrowseClick = () => {

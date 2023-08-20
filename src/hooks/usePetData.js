@@ -31,6 +31,7 @@ const usePetData = (petType, sortBy, searchTerm) => {
   };
 
   // addPet() is a helper function that adds a new pet to the pets array.
+  // Due to error handling, addPet() returns a promise.
   const addPet = (pet) => {
     return new Promise((resolve, reject) => {
       try {
@@ -52,6 +53,7 @@ const usePetData = (petType, sortBy, searchTerm) => {
   };
 
   // updatePet() is a helper function that updates an existing pet in the pets array.
+  // Due to error handling, updatePet() returns a promise.
   const updatePet = (updatedPet) => {
     return new Promise((resolve, reject) => {
       try {

@@ -15,9 +15,9 @@ const PetList = ({ petType }) => {
   const { pets, pet, addPet, updatePet, deletePet, error, setError } =
     usePetData(petType, sortBy, searchTerm);
 
-  const handleAddEditClick = (petID) => {
-    if (petID) {
-      setSelectedPet(pet(petID));
+  const handleAddEditClick = (petId) => {
+    if (petId) {
+      setSelectedPet(pet(petId));
     }
     setIsModalOpen(true);
   };
