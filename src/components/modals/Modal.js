@@ -3,10 +3,18 @@ import { X } from '@phosphor-icons/react';
 
 const Modal = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
+  const handleOutsideClick = (e) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
 
   return (
-    <div className="fixed top-0 left-0 z-50 flex items-center justify-center w-full h-full backdrop-opacity-20 bg-white/30 ">
-      <div className="relative z-50 flex flex-col justify-between px-10 py-5 rounded shadow-md bg-color5 ">
+    <div
+      className="fixed top-0 left-0 z-50 flex items-center justify-center w-full h-full bg-white/30"
+      onClick={handleOutsideClick}
+    >
+      <div className="relative flex flex-col justify-between px-10 py-5 rounded shadow-md bg-color5">
         <div
           onClick={() => {
             onClose();

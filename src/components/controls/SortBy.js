@@ -1,10 +1,7 @@
 const SortBy = ({ sortBy, setSortBy }) => {
   return (
     <div className="flex ml-2">
-      <label
-        className="flex items-end mb-1 mr-2 text-sm font-bold "
-        htmlFor="search"
-      >
+      <label className="flex items-end mb-1 mr-2 text-sm font-bold ">
         Sort by:
       </label>
       <select
