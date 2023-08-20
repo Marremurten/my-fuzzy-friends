@@ -1,17 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import catsData from '../data/cats';
 import dogsData from '../data/dogs';
 
 const usePetData = (petType, sortBy, searchTerm) => {
-  const [pets, setPets] = useState([]);
+  const [cats, setCats] = useState(catsData);
+  const [dogs, setDogs] = useState(dogsData);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    petType === 'cat' ? setPets(catsData) : setPets(dogsData);
-  }, [petType]);
+  const getPetsByType = () => (petType === 'cat' ? cats : dogs);
 
   // generateUniqueId() is a helper function that generates a unique ID for a new pet.
   const generateUniqueId = () => {
+    const pets = getPetsByType();
     let newId = pets.length + 1;
     while (isIdUnique(newId)) {
       newId++;
@@ -20,11 +20,13 @@ const usePetData = (petType, sortBy, searchTerm) => {
   };
 
   const isIdUnique = (id) => {
+    const pets = getPetsByType();
     return pets.some((pet) => pet.id === id);
   };
 
   // pet() is a helper function that returns a pet by ID.
   const pet = (petId) => {
+    const pets = getPetsByType();
     return pets.find((pet) => pet.id === petId);
   };
 
@@ -38,7 +40,7 @@ const usePetData = (petType, sortBy, searchTerm) => {
 
         const newId = generateUniqueId();
         pet.id = newId;
-        setPets([...pets, pet]);
+        petType === 'cat' ? setCats([...cats, pet]) : setDogs([...dogs, pet]);
         setError(null);
         resolve();
       } catch (error) {
@@ -56,10 +58,11 @@ const usePetData = (petType, sortBy, searchTerm) => {
         if (!updatedPet.name || !updatedPet.dateOfBirth) {
           throw new Error('Name and date of birth are required.');
         }
+        const pets = getPetsByType();
         const updatedPets = pets.map((pet) =>
           pet.id === updatedPet.id ? updatedPet : pet
         );
-        setPets(updatedPets);
+        petType === 'cat' ? setCats(updatedPets) : setDogs(updatedPets);
         setError(null);
 
         resolve(); // Resolve the promise if successful
@@ -72,8 +75,9 @@ const usePetData = (petType, sortBy, searchTerm) => {
 
   // deletePet is a helper function that deletes a pet from the pets array.
   const deletePet = (petId) => {
+    const pets = getPetsByType();
     const updatedPets = pets.filter((pet) => pet.id !== petId);
-    setPets(updatedPets);
+    petType === 'cat' ? setCats(updatedPets) : setDogs(updatedPets);
   };
 
   // sortPets() is a helper function that sorts pets by the selected sort option.
@@ -98,7 +102,7 @@ const usePetData = (petType, sortBy, searchTerm) => {
 
   // sortedAndFilteredPets is an array of pets that have been sorted and filtered.
   // futher development: if the data set is large, I may consider memoizing this function using useMemo() to improve performance.
-  const sortedAndFilteredPets = filterPets(sortPets(pets));
+  const sortedAndFilteredPets = filterPets(sortPets(getPetsByType()));
 
   return {
     pets: sortedAndFilteredPets,
