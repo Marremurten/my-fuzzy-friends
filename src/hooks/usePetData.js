@@ -86,9 +86,9 @@ const usePetData = (petType, sortBy, searchTerm) => {
   const sortPets = (petsArray) => {
     return petsArray.slice().sort((a, b) => {
       if (sortBy === 'id') return a.id - b.id;
-      if (sortBy === 'name') a.name.localeCompare(b.name);
+      if (sortBy === 'name') return a.name.localeCompare(b.name);
       if (sortBy === 'age') return a.dateOfBirth.localeCompare(b.dateOfBirth);
-      if (sortBy === 'gender') a.gender.localeCompare(b.gender);
+      return 0;
     });
   };
 
